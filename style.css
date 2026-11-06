@@ -1,0 +1,25 @@
+:root{--bg:#050506;--ink:#fff;--soft:rgba(255,255,255,.72);--line:rgba(255,255,255,.16);--bloom:#ff5a2a;--rose:#e8287a}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;color:var(--ink);font-family:Alexandria,system-ui,sans-serif;font-weight:300;line-height:1.75;background:var(--bg)}
+a{color:inherit;text-underline-offset:4px}
+a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-size:15px}
+header.top nav{display:flex;gap:18px}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:9vh;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -30% auto;height:90%;z-index:-1;filter:blur(70px);
+  background:radial-gradient(circle at 42% 50%,var(--rose),transparent 46%),radial-gradient(circle at 60% 58%,var(--bloom),transparent 50%);
+  animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.hero::before{animation:none}}
+h1{font-weight:200;font-size:clamp(52px,14vw,104px);line-height:1.08;margin:0 0 18px}
+.hero p{font-size:clamp(18px,4.6vw,22px);color:var(--soft);max-width:30em;margin:0}
+.en{direction:ltr;text-align:left}
+article h1{font-size:clamp(36px,9vw,56px);margin:34px 0 8px}
+article h2{font-weight:400;font-size:20px;margin:34px 0 6px}
+article p,article li{color:var(--soft)}
+article ul{padding-inline-start:20px}
+.meta{font-size:14px;color:var(--soft)}
+hr{border:0;border-top:1px solid var(--line);margin:56px 0}
+footer{border-top:1px solid var(--line);margin-top:70px;padding:26px 0 44px;font-size:14px;color:var(--soft)}
