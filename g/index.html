@@ -12,11 +12,13 @@
 <div class="link">
 <header class="aura a-orange"><p class="from">حياك الله</p><h1 id="title">…</h1><p class="when" id="when"></p></header>
 <main>
+<a class="app" data-open="g" href="#">عندك معليش؟ افتحها في التطبيق</a>
 <div class="name"><input id="who" maxlength="40" placeholder="اسمك" aria-label="اسمك" autocomplete="given-name"></div>
 <h2 id="dishes-h">مين يجيب وش؟ اختر واحد وأنت جاي</h2>
 <ul id="items"></ul>
 <div class="row"><button id="yes">جاي إن شاء الله</button><button id="no" class="ghost">أعتذر</button></div>
 <p class="msg" id="msg" role="status"></p>
+<div class="get" id="get"><p>حمّل معليش وشوف مين جاي، ويذكرك يوم العزيمة.</p><a href="/">قريبًا على App Store</a></div>
 <h2 id="count"></h2>
 </main>
 <footer>دعوة من تطبيق <a href="/">معليش</a>.</footer>
@@ -52,7 +54,7 @@ async function load() {
 async function reply(coming) {
   const n = myName(); if (!n) { say('اكتب اسمك أول'); nameBox.focus(); return; }
   try { const ok = await call('gathering_reply', { t: token, who: n, is_coming: coming, item: coming ? pick : null });
-        say(ok ? (coming ? 'وصل ردك، ننتظرك' : 'وصل اعتذارك، الله يسهل عليك') : 'ما قدرنا نسجل ردك'); pick = null; load(); }
+        say(ok ? (coming ? 'وصل ردك، ننتظرك' : 'وصل اعتذارك، الله يسهل عليك') : 'ما قدرنا نسجل ردك'); pick = null; load(); if (ok) showGet(); }
   catch { say('ما قدرنا نسجل ردك، حاول بعد شوي'); }
 }
 $('#yes').onclick = () => reply(true); $('#no').onclick = () => reply(false);

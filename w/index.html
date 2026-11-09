@@ -12,9 +12,11 @@
 <div class="link">
 <header class="aura a-rose"><p class="from">قائمة أمنيات</p><h1 id="title">…</h1><p class="when">احجز هديتك عشان ما نجيب نفس الشي</p></header>
 <main>
+<a class="app" data-open="w" href="#">عندك معليش؟ افتحها في التطبيق</a>
 <div class="name"><input id="who" maxlength="40" placeholder="اسمك" aria-label="اسمك" autocomplete="given-name"></div>
 <ul id="items"></ul>
 <p class="msg" id="msg" role="status"></p>
+<div class="get" id="get"><p>حمّل معليش، ويذكرك قبل يوم الهدية، وتسوي قائمة أمنياتك أنت بعد.</p><a href="/">قريبًا على App Store</a></div>
 <p class="note">اللي تحجزه يشوفه الكل، فلا أحد يجيب نفس الهدية.</p>
 </main>
 <footer>قائمة من تطبيق <a href="/">معليش</a>. ما تنسى أحد بعد اليوم.</footer>
@@ -45,7 +47,7 @@ async function load() {
         const n = myName(); if (!n) { say('اكتب اسمك أول'); nameBox.focus(); return; }
         b.disabled = true;
         try { const ok = await call('wishlist_reserve', { t: token, item: i.id, who: n });
-              say(ok ? 'تم، الهدية باسمك' : 'أحد سبقك عليها'); load(); }
+              say(ok ? 'تم، الهدية باسمك' : 'أحد سبقك عليها'); load(); if (ok) showGet(); }
         catch { say('ما قدرنا نحجزها، حاول بعد شوي'); b.disabled = false; }
       };
       li.append(b);

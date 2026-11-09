@@ -15,3 +15,6 @@ async function call(fn, body) {
   if (!r.ok) throw new Error(r.status);
   return r.json();
 }
+// People who already have Maalesh open the same link inside the app.
+document.querySelectorAll('[data-open]').forEach((a) => { a.href = 'maalesh://' + a.dataset.open + '/' + encodeURIComponent(token); });
+const showGet = () => { const g = $('#get'); if (g) g.classList.add('on'); };
