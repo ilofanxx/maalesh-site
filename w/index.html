@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>قائمة أمنيات - معليش</title>
+<meta name="description" content="احجز هديتك عشان ما تتكرر.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/link.css">
+</head>
+<body>
+<div class="link">
+<header class="aura a-rose"><p class="from">قائمة أمنيات</p><h1 id="title">…</h1><p class="when">احجز هديتك عشان ما نجيب نفس الشي</p></header>
+<main>
+<div class="name"><input id="who" maxlength="40" placeholder="اسمك" aria-label="اسمك" autocomplete="given-name"></div>
+<ul id="items"></ul>
+<p class="msg" id="msg" role="status"></p>
+<p class="note">اللي تحجزه يشوفه الكل، فلا أحد يجيب نفس الهدية.</p>
+</main>
+<footer>قائمة من تطبيق <a href="/">معليش</a>. ما تنسى أحد بعد اليوم.</footer>
+</div>
+<script src="/link.js"></script>
+<script>
+const DEMO_W = { title: 'أمنيات أمي', items: [
+  { id: '1', title: 'عطر عود', price: 450, reserved_by: 'فهد' },
+  { id: '2', title: 'ساعة ذهبية', price: 1800, reserved_by: null },
+  { id: '3', title: 'كتاب طبخ', price: 90, reserved_by: null }] };
+const DEMO = { wishlist_view: () => DEMO_W, wishlist_reserve: (b) => {
+  const i = DEMO_W.items.find((x) => x.id === b.item); if (!i || i.reserved_by) return false; i.reserved_by = b.who; return true; } };
+async function load() {
+  let v;
+  try { v = await call('wishlist_view', { t: token }); } catch { say('ما قدرنا نفتح القائمة، تأكد من النت'); return; }
+  if (!v) { $('#title').textContent = 'الرابط انتهى'; return; }
+  $('#title').textContent = v.title; document.title = v.title + ' - معليش';
+  const list = $('#items'); list.replaceChildren();
+  for (const i of v.items) {
+    const li = el('li'); const text = el('div');
+    text.append(el('div', 't', i.title));
+    if (i.price) text.append(el('div', 'p', Number(i.price).toLocaleString('ar') + ' تقريبًا'));
+    li.append(text);
+    if (i.reserved_by) li.append(el('span', 'taken', 'حجزها ' + i.reserved_by));
+    else {
+      const b = el('button', null, 'أنا أجيبها');
+      b.onclick = async () => {
+        const n = myName(); if (!n) { say('اكتب اسمك أول'); nameBox.focus(); return; }
+        b.disabled = true;
+        try { const ok = await call('wishlist_reserve', { t: token, item: i.id, who: n });
+              say(ok ? 'تم، الهدية باسمك' : 'أحد سبقك عليها'); load(); }
+        catch { say('ما قدرنا نحجزها، حاول بعد شوي'); b.disabled = false; }
+      };
+      li.append(b);
+    }
+    list.append(li);
+  }
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>دعوة - معليش</title>
+<meta name="description" content="رد على الدعوة واختر وش تجيب.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/link.css">
+</head>
+<body>
+<div class="link">
+<header class="aura a-orange"><p class="from">حياك الله</p><h1 id="title">…</h1><p class="when" id="when"></p></header>
+<main>
+<div class="name"><input id="who" maxlength="40" placeholder="اسمك" aria-label="اسمك" autocomplete="given-name"></div>
+<h2 id="dishes-h">مين يجيب وش؟ اختر واحد وأنت جاي</h2>
+<ul id="items"></ul>
+<div class="row"><button id="yes">جاي إن شاء الله</button><button id="no" class="ghost">أعتذر</button></div>
+<p class="msg" id="msg" role="status"></p>
+<h2 id="count"></h2>
+</main>
+<footer>دعوة من تطبيق <a href="/">معليش</a>.</footer>
+</div>
+<script src="/link.js"></script>
+<script>
+const DEMO_V = { title: 'فطور رمضان عند أهلي', starts_at: new Date(Date.now() + 3 * 864e5).toISOString(), place: 'بيت أبوي',
+  items: [{ id: 'a', title: 'حلا', taken_by: 'ريم' }, { id: 'b', title: 'قهوة وتمر', taken_by: null }, { id: 'c', title: 'سمبوسة', taken_by: null }],
+  replies: [{ name: 'خالد', coming: true }, { name: 'ريم', coming: true }, { name: 'فهد', coming: false }] };
+const DEMO = { gathering_view: () => DEMO_V, gathering_reply: (b) => {
+  DEMO_V.replies.push({ name: b.who, coming: b.is_coming });
+  const it = DEMO_V.items.find((x) => x.id === b.item); if (it && b.is_coming && !it.taken_by) it.taken_by = b.who; return true; } };
+let pick = null;
+async function load() {
+  let v;
+  try { v = await call('gathering_view', { t: token }); } catch { say('ما قدرنا نفتح الدعوة، تأكد من النت'); return; }
+  if (!v) { $('#title').textContent = 'الرابط انتهى'; return; }
+  $('#title').textContent = v.title; document.title = v.title + ' - معليش';
+  const d = new Date(v.starts_at);
+  $('#when').textContent = d.toLocaleString('ar', { weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }) + (v.place ? ' · ' + v.place : '');
+  const list = $('#items'); list.replaceChildren();
+  $('#dishes-h').hidden = !v.items.length;
+  for (const i of v.items) {
+    const li = el('li'); li.append(el('div', 't', i.title));
+    if (i.taken_by) li.append(el('span', 'taken', i.taken_by));
+    else { const b = el('button', pick === i.id ? null : 'ghost', pick === i.id ? 'اخترته' : 'أنا أجيبه');
+           b.onclick = () => { pick = pick === i.id ? null : i.id; load(); }; li.append(b); }
+    list.append(li);
+  }
+  const yes = v.replies.filter((r) => r.coming);
+  $('#count').textContent = yes.length ? 'جايين: ' + yes.map((r) => r.name).join('، ') : '';
+}
+async function reply(coming) {
+  const n = myName(); if (!n) { say('اكتب اسمك أول'); nameBox.focus(); return; }
+  try { const ok = await call('gathering_reply', { t: token, who: n, is_coming: coming, item: coming ? pick : null });
+        say(ok ? (coming ? 'وصل ردك، ننتظرك' : 'وصل اعتذارك، الله يسهل عليك') : 'ما قدرنا نسجل ردك'); pick = null; load(); }
+  catch { say('ما قدرنا نسجل ردك، حاول بعد شوي'); }
+}
+$('#yes').onclick = () => reply(true); $('#no').onclick = () => reply(false);
+load();
+</script>
+</body>
+</html>
