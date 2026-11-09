@@ -73,6 +73,7 @@ h2{font-weight:200;font-size:var(--t-title);line-height:1.28;margin:0 0 18px}
 .private p{margin-inline:auto}
 .end{padding:var(--gap) 20px 40px;text-align:center;color:var(--soft);font-size:var(--t-small)}
 .end nav{display:flex;justify-content:center;gap:20px;margin-top:20px}
+.end .co{margin-top:18px;font-size:12px;letter-spacing:.04em;opacity:.55;direction:ltr}
 .end .big{margin:0 0 14px;font-weight:200;font-size:var(--t-title);line-height:1.28;color:#fff}
 
 @media (max-width:900px){.screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0}.screens::-webkit-scrollbar{display:none}.screens figure{flex:0 0 min(68vw,280px);scroll-snap-align:center}}
