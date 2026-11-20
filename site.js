@@ -27,10 +27,13 @@ function draw(now){
     x.drawImage(picture,i,0,step,H,i,dy,step,H);
   }
 }
-function loop(n){draw(n);requestAnimationFrame(loop)}
+let heroOn=true,raf=0;
+function loop(n){draw(n);raf=heroOn&&!document.hidden?requestAnimationFrame(loop):0}
+function wake(){if(!still&&!raf&&heroOn&&!document.hidden)raf=requestAnimationFrame(loop)}
 
 const ring=document.getElementById('ring');
-if(ring){let s='';for(let i=0;i<72;i++){const a=i*5,on=i<=52;s+=`<line x1="100" y1="6" x2="100" y2="${i%6?13:17}" transform="rotate(${a} 100 100)" stroke="#fff" stroke-opacity="${on?1:.25}" stroke-width="1"/>`}ring.innerHTML=s}
+if(ring){let s='';for(let i=0;i<72;i++){const a=i*5;s+=`<line x1="100" y1="6" x2="100" y2="${i%6?13:17}" transform="rotate(${a} 100 100)" stroke="#fff" stroke-opacity=".25" stroke-width="1" style="transition-delay:${still?0:i*14}ms"/>`}ring.innerHTML=s}
+function fillRing(){if(ring)ring.querySelectorAll('line').forEach((l,i)=>{if(i<=52)l.setAttribute('stroke-opacity','1')})}
 function digits(){
   const d=document.getElementById('digits');if(!d)return;
   const g=G[root.lang==='ar'?'arabic':'western']['5'];
@@ -38,8 +41,38 @@ function digits(){
 }
 const saved=store('lang'),first=saved||((navigator.language||'ar').startsWith('ar')?'ar':'en');
 root.lang=first;root.dir=first==='ar'?'rtl':'ltr';
-document.fonts.load('200 80px Alexandria',first==='ar'?'معليش':'Maalesh').then(()=>{word();if(!still)requestAnimationFrame(loop)});
+document.fonts.load('200 80px Alexandria',first==='ar'?'معليش':'Maalesh').then(()=>{word();wake()});
 digits();addEventListener('resize',word);
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.7});
 document.querySelectorAll('.excuses li').forEach((l,i)=>{l.style.transitionDelay=i*90+'ms';io.observe(l)});
+
+// Hero wave runs only while the hero is on screen
+const hero=document.querySelector('.hero');
+if(hero)new IntersectionObserver(([e])=>{heroOn=e.isIntersecting;wake()}).observe(hero);
+document.addEventListener('visibilitychange',wake);
+
+// Reveal: blocks below the fold wait, then arrive as they scroll in
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');t.classList.remove('wait');rv.unobserve(t);if(t.classList.contains('dial'))fillRing()}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>{
+  const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));
+  el.style.setProperty('--d',Math.min(sib.indexOf(el),4)*90+'ms');
+  if(el.getBoundingClientRect().top>innerHeight*.92)el.classList.add('wait');
+  rv.observe(el);
+});
+
+// Voice note: a waveform that plays while the chat is on screen
+document.querySelectorAll('.wave').forEach(w=>{
+  const n=+w.dataset.bars||30,dur=4.2;let h='';
+  for(let i=0;i<n;i++){const v=.25+.75*Math.abs(Math.sin(i*1.7)*Math.cos(i*.45));h+=`<i style="height:${Math.round(6+v*24)}px;animation-delay:${(i/n*dur*.8).toFixed(2)}s"></i>`}
+  w.innerHTML=h;
+});
+const mock=document.querySelector('.mock');
+if(mock){
+  const clips=[...mock.querySelectorAll('.clip:not(.mine)')];let k=0,timer=0;
+  const tick=()=>{clips.forEach(c=>c.classList.remove('hit'));void mock.offsetWidth;clips[k++%clips.length].classList.add('hit')};
+  new IntersectionObserver(([e])=>{
+    mock.classList.toggle('live',e.isIntersecting&&!still);
+    clearInterval(timer);if(e.isIntersecting&&!still)timer=setInterval(tick,2200);
+  }).observe(mock);
+}
