@@ -3,134 +3,277 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>معليش - Maalesh</title>
-<meta name="description" content="معليش مو كل مره تفيد. أعياد ميلاد اللي تحبهم وتفاصيلهم ومواعيدك، وشات بالفويس والمقاطع الصوتية، في مكان واحد خاص فيك. قريبًا على آيفون وأندرويد.">
-<meta property="og:title" content="معليش - Maalesh"><meta property="og:description" content="معليش مو كل مره تفيد."><meta property="og:image" content="https://nomaalesh.com/icon.png">
+<meta name="description" content="معليش عمرها ما فادت. أعياد ميلاد اللي تحبهم وتفاصيلهم وتذكيرها، مع شات ومهام ومواعيد، في مكان واحد خاص فيك. متوفر الآن على أندرويد.">
+<meta property="og:title" content="معليش - Maalesh"><meta property="og:description" content="معليش عمرها ما فادت. تذكّر قبل ما تحتاج تقولها."><meta property="og:image" content="https://nomaalesh.com/icon.png">
+<meta name="theme-color" content="#F5F1FF">
 <link rel="icon" href="/icon.png">
-<link rel="stylesheet" href="/style.css">
+<link rel="preload" href="fonts/Lalezar-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="home.css">
 </head>
-<body class="home">
+<body>
 <header class="bar">
   <a class="mark" href="/"><span class="ar">معليش</span><span class="en">Maalesh</span></a>
   <nav>
-    <a href="/privacy/"><span class="ar">الخصوصية</span><span class="en">Privacy</span></a>
-    <a href="/terms/"><span class="ar">الشروط</span><span class="en">Terms</span></a>
-    <a href="/support/"><span class="ar">الدعم</span><span class="en">Support</span></a>
-    <button id="lang" type="button"><span class="ar">EN</span><span class="en">عربي</span></button>
+    <a class="hide-s" href="/privacy/"><span class="ar">الخصوصية</span><span class="en">Privacy</span></a>
+    <a class="hide-s" href="/terms/"><span class="ar">الشروط</span><span class="en">Terms</span></a>
+    <a class="hide-s" href="/support/"><span class="ar">الدعم</span><span class="en">Support</span></a>
+    <button id="lang" type="button" aria-label="Language"><span class="ar">English</span><span class="en">عربي</span></button>
   </nav>
 </header>
 
 <main>
-<section class="hero" aria-label="معليش">
-  <div class="aura a-rose" aria-hidden="true"></div>
-  <h1 class="sr"><span class="ar">معليش</span><span class="en">Maalesh</span></h1>
-  <canvas id="word" aria-hidden="true"></canvas>
-  <p class="line"><span class="ar">مو كل مره تفيد</span><span class="en">Saying sorry doesn't always work</span></p>
-  <p class="soon"><span class="ar">قريبًا على آيفون وأندرويد</span><span class="en">Coming soon to iPhone and Android</span></p>
-</section>
+<section class="hero">
+  <div class="scene" id="scene">
+    <svg viewBox="0 -30 600 570" role="img" aria-labelledby="scene-t">
+      <title id="scene-t">شاب جايب ورد يقول معليش، وبنت زعلانة ترد: معليش عمرها ما فادت</title>
+      <circle class="sun" cx="300" cy="330" r="212"/>
+      <path class="floor" d="M40 506H560"/>
 
-<section class="excuses" id="story">
-  <h2><span class="ar">كلنا قلناها</span><span class="en">We've all said it</span></h2>
-  <ul>
-    <li><span class="ar">نسيت عيد ميلادها</span><span class="en">I forgot her birthday</span></li>
-    <li><span class="ar">ما شفت الرسالة</span><span class="en">I didn't see the message</span></li>
-    <li><span class="ar">كان عندي شغل</span><span class="en">I was stuck at work</span></li>
-    <li><span class="ar">بكرة أكلمه</span><span class="en">I'll call tomorrow</span></li>
-  </ul>
-  <p class="answer"><span class="ar">معليش ما تنفع مع كل اللي تحبهم.</span><span class="en">Sorry won't work for everyone you love.</span></p>
-</section>
+      <!-- الشاب -->
+      <g class="guy"><g class="guy-in">
+        <ellipse class="shade" cx="175" cy="508" rx="78" ry="9"/>
+        <ellipse class="ln" cx="156" cy="500" rx="17" ry="8" fill="#8A5A3C"/>
+        <ellipse class="ln" cx="196" cy="500" rx="17" ry="8" fill="#8A5A3C"/>
+        <path class="ln" d="M130 356C130 326 220 326 220 356L238 498H112Z" fill="#fff"/>
+        <path class="thin" d="M175 338V392"/><circle cx="175" cy="356" r="3"/><circle cx="175" cy="372" r="3"/>
+        <path class="ln" d="M103 258C103 166 247 166 247 258C247 304 240 336 229 354H121C110 336 103 304 103 258Z" fill="#fff"/>
+        <ellipse class="ln" cx="175" cy="268" rx="55" ry="52" fill="#EDB98A"/>
+        <path d="M119 268C119 166 231 166 231 268C219 228 196 217 175 217C154 217 131 228 119 268Z" fill="#fff"/>
+        <path class="ln" d="M119 268C131 228 154 217 175 217C196 217 219 228 231 268" fill="none"/>
+        <path class="agal" d="M121 208Q175 224 229 208"/><path class="agal" d="M128 193Q175 208 222 193"/>
+        <path class="brow" d="M141 257L163 249"/><path class="brow" d="M209 257L187 249"/>
+        <ellipse cx="155" cy="274" rx="8" ry="10"/><ellipse cx="197" cy="274" rx="8" ry="10"/>
+        <circle cx="152" cy="270" r="3" fill="#fff"/><circle cx="194" cy="270" r="3" fill="#fff"/>
+        <ellipse cx="140" cy="292" rx="9" ry="5" fill="#F58F8F" opacity=".6"/><ellipse cx="212" cy="292" rx="9" ry="5" fill="#F58F8F" opacity=".6"/>
+        <path class="mouth m-smile" d="M163 299q12 10 24 0"/>
+        <path class="mouth m-wavy" d="M160 302q6-7 12 0t12 0t6-2"/>
+        <path class="sweat" d="M240 222c7 10 10 15 10 20a10 10 0 0 1-20 0c0-5 3-10 10-20Z"/>
+        <path class="arm-o" d="M214 360L256 378"/><path class="arm-i" d="M214 360L256 378" stroke="#fff"/>
+        <g transform="translate(262 380)"><g class="bq">
+          <ellipse class="ln" cx="-22" cy="-46" rx="9" ry="16" fill="#3DBE7B" transform="rotate(-35 -22 -46)"/>
+          <ellipse class="ln" cx="44" cy="-50" rx="9" ry="16" fill="#3DBE7B" transform="rotate(40 44 -50)"/>
+          <path class="ln" d="M-5 24L-26-42L36-52Z" fill="#FFF3D6"/>
+          <circle class="ln" cx="-14" cy="-54" r="15" fill="#F21A80"/><circle cx="-14" cy="-54" r="5" fill="#FFD45C"/>
+          <circle class="ln" cx="34" cy="-60" r="14" fill="#FF8C38"/><circle cx="34" cy="-60" r="5" fill="#FFF3D6"/>
+          <circle class="ln" cx="10" cy="-70" r="17" fill="#fff"/><circle cx="10" cy="-70" r="6" fill="#FFD45C"/>
+          <circle class="ln" cx="8" cy="-40" r="13" fill="#F21A80"/><circle cx="8" cy="-40" r="4.5" fill="#FFD45C"/>
+          <path class="ln" d="M-10 4L10 0L6 12L-8 14Z" fill="#F21A80"/>
+        </g></g>
+        <circle class="ln" cx="262" cy="380" r="10" fill="#EDB98A"/>
+      </g></g>
 
-<section class="people" id="people">
-  <div class="count">
-    <div class="dial rv">
-      <svg id="ring" viewBox="0 0 200 200" aria-hidden="true"></svg>
-      <div id="digits" aria-hidden="true"></div>
+      <!-- القلب -->
+      <g transform="translate(304 226)"><g class="heart">
+        <path class="ln" d="M0 8C-18-12-34 8 0 32C34 8 18-12 0 8Z" fill="#F21A80"/>
+        <path class="thin" d="M0 8L-6 15L4 20L-2 30" stroke="#fff"/>
+      </g></g>
+      <ellipse class="petal" cx="300" cy="500" rx="9" ry="5" fill="#F21A80"/>
+
+      <!-- البنت -->
+      <g class="girl">
+        <ellipse class="shade" cx="420" cy="508" rx="84" ry="9"/>
+        <g transform="translate(398 500)"><ellipse class="ln foot" cx="0" cy="0" rx="17" ry="8" fill="#F21A80"/></g>
+        <ellipse class="ln" cx="442" cy="500" rx="17" ry="8" fill="#F21A80"/>
+        <path class="ln" d="M370 352C370 322 470 322 470 352L494 498H346Z" fill="#3A2147"/>
+        <path d="M420 338V498" stroke="#5B3A6E" stroke-width="3" fill="none"/>
+        <g class="g-head">
+          <path class="ln" d="M338 252C338 156 502 156 502 252C502 302 486 338 470 354H370C354 338 338 302 338 252Z" fill="#F2578F"/>
+          <ellipse class="ln" cx="420" cy="264" rx="58" ry="55" fill="#F7C9A3"/>
+          <path d="M361 264C361 160 479 160 479 264C466 224 442 213 420 213C398 213 374 224 361 264Z" fill="#F2578F"/>
+          <path class="ln" d="M361 264C374 224 398 213 420 213C442 213 466 224 479 264" fill="none"/>
+          <path class="brow" d="M383 249L408 259"/><path class="brow" d="M457 249L432 259"/>
+          <g class="g-closed"><path class="mouth" d="M388 272q10 8 20 0"/><path class="mouth" d="M432 272q10 8 20 0"/></g>
+          <g class="g-open">
+            <ellipse cx="396" cy="273" rx="8" ry="11"/><ellipse cx="438" cy="273" rx="8" ry="11"/>
+            <circle cx="393" cy="269" r="3" fill="#fff"/><circle cx="435" cy="269" r="3" fill="#fff"/>
+          </g>
+          <ellipse cx="382" cy="293" rx="10" ry="6" fill="#FF7FA0" opacity=".75"/><ellipse cx="458" cy="293" rx="10" ry="6" fill="#FF7FA0" opacity=".75"/>
+          <path class="mouth m-pout" d="M410 305q10-9 20 0"/>
+          <ellipse class="m-talk" cx="420" cy="304" rx="9" ry="7"/>
+          <g transform="translate(486 190)"><path class="vein" d="M-13-4q9 0 9-9M4-13q0 9 9 9M13 4q-9 0-9 9M-4 13q0-9-9-9"/></g>
+          
+        </g>
+        <path class="arm-o" d="M380 392L454 372"/><path class="arm-i" d="M380 392L454 372" stroke="#3A2147"/>
+        <path class="arm-o" d="M388 372L462 392"/><path class="arm-i" d="M388 372L462 392" stroke="#3A2147"/>
+        <circle class="ln" cx="386" cy="371" r="10" fill="#F7C9A3"/>
+      </g>
+    </svg>
+    <p class="bubble b1" aria-hidden="true"><span class="ar">معليش</span><span class="en">Sorry…</span></p>
+    <p class="bubble b2" aria-hidden="true"><span class="ar">معليش عمرها ما فادت!</span><span class="en">Sorry never fixed anything!</span></p>
+    <button class="replay" id="replay" type="button"><span class="ar">عيد المشهد</span><span class="en">Replay</span></button>
+  </div>
+
+  <div class="hero-copy">
+    <h1><span class="ar">تذكّر قبل ما تحتاج تقولها.</span><span class="en">Remember, so you never have to say it.</span></h1>
+    <p class="lead"><span class="ar">معليش يذكّرك بأعياد ميلاد اللي تحبهم، ويحفظ لك تفاصيلهم. ويذكّرك بحياتك أنت بعد: متى ينزل راتبك، التزاماتك وأقساطك، أغراض البيت، ومواعيدك ومهامك.</span><span class="en">Maalesh reminds you of the birthdays of the people you love and keeps their details. It reminds you of your own life too: when your salary lands, your bills and instalments, the home list, your appointments and tasks.</span></p>
+    <div class="cta-row" id="hero-cta">
+      <a class="btn play-btn" href="https://play.google.com/store/apps/details?id=com.maalesh.app" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.9l14-8.5a1 1 0 0 0 0-1.8l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+        <span class="ar">حمّله من قوقل بلاي</span><span class="en">Get it on Google Play</span>
+      </a>
+      <span class="chip"><span class="ar">آيفون: قريبًا</span><span class="en">iPhone: coming soon</span></span>
     </div>
-    <div class="copy rv">
-      <h2><span class="ar">كل شخص له عدّه</span><span class="en">Everyone gets a countdown</span></h2>
-      <p><span class="ar">تشوف كم باقي على عيد ميلاد كل شخص، ويذكرك التطبيق قبلها. اللي تعرفه عنه يبقى في صفحته الخاصة.</span><span class="en">See how long is left until each birthday, and get reminded before it. What you know about them stays on their private page.</span></p>
+    <p class="trust"><span class="ar">بدون إعلانات، بدون تتبع</span><span class="en">No ads, no tracking</span></p>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-in">
+  <span class="ar">عيد ميلاد ✦ ذكرى زواج ✦ تخرج ✦ مولود ✦ وظيفة جديدة ✦ رمضان ✦ العيدين ✦ زواج ✦ عزيمة ✦ زيارة مريض ✦ </span><span class="ar">عيد ميلاد ✦ ذكرى زواج ✦ تخرج ✦ مولود ✦ وظيفة جديدة ✦ رمضان ✦ العيدين ✦ زواج ✦ عزيمة ✦ زيارة مريض ✦ </span>
+  <span class="en">Birthdays ✦ Anniversaries ✦ Graduations ✦ New babies ✦ New jobs ✦ Ramadan ✦ Both Eids ✦ Weddings ✦ Gatherings ✦ Hospital visits ✦ </span><span class="en">Birthdays ✦ Anniversaries ✦ Graduations ✦ New babies ✦ New jobs ✦ Ramadan ✦ Both Eids ✦ Weddings ✦ Gatherings ✦ Hospital visits ✦ </span>
+</div></div>
+
+<section class="intro rv">
+  <p><span class="ar">كم مرة نسيت عيد ميلاد شخص تحبه، وقلت له معليش؟<br><b>هذا التطبيق يخليك ما تحتاجها.</b></span><span class="en">How often have you forgotten the birthday of someone you love, then said sorry?<br><b>Maalesh means you won't need to.</b></span></p>
+</section>
+
+<section class="feat f-blue" id="people">
+  <div class="feat-copy">
+    <p class="excuse rv"><s><span class="ar">«نسيت عيد ميلادها»</span><span class="en">“I forgot her birthday”</span></s></p>
+    <h2 class="rv"><span class="ar">لكل شخص بطاقة حية تكبر كل ما قرب يومه</span><span class="en">Every person gets a living card that grows as their day gets closer</span></h2>
+    <ul class="rv">
+      <li><span class="ar">عد تنازلي لعيد ميلاده، وتذكير قبله بأسبوع وبيوم وفي نفس اليوم</span><span class="en">A birthday countdown, with reminders a week before, a day before and on the day</span></li>
+      <li><span class="ar">تفاصيله اللي ما تبي تنساها: المقاس، الهدية، أي شي مهم</span><span class="en">The details you never want to forget: sizes, gift ideas, anything important</span></li>
+      <li><span class="ar">تنبيه لما يطول غيابك عن أحد تحبه</span><span class="en">A nudge when you haven't talked to someone in a while</span></li>
+      <li><span class="ar">صورته مخفية، وتظهر لك بضغطة طويلة</span><span class="en">Their photo stays hidden until you press and hold</span></li>
+      <li><span class="ar">رسالة الصباح: اكتبها، ونذكرك فيها كل يوم، وترسلها أنت</span><span class="en">Morning message: write it, we remind you every day, and you send it yourself</span></li>
+    </ul>
+  </div>
+  <div class="phones">
+    <figure class="phone rv"><img class="ar" src="shots/ar-people.jpg" alt="بطاقة سارة وعد تنازلي لعيد ميلادها" loading="lazy" width="600" height="1304"><img class="en" src="shots/en-people.jpg" alt="Sara's card with a birthday countdown" loading="lazy" width="600" height="1304"></figure>
+    <figure class="phone rv"><img src="shots/ar-person.jpg" alt="بطاقة الأم: آخر مرة كلمته، الهدية، بطاقة تهنئة" loading="lazy" width="600" height="1304"></figure>
+  </div>
+</section>
+
+<section class="feat f-sun" id="around">
+  <div class="feat-copy">
+    <p class="excuse rv"><s><span class="ar">«ما دريت إن عندكم عزيمة»</span><span class="en">“Nobody told me about the dinner”</span></s></p>
+    <h2 class="rv"><span class="ar">ومع الناس اللي حولك</span><span class="en">With the people around you</span></h2>
+    <ul class="rv">
+      <li><span class="ar">مناسبات أكثر من أعياد الميلاد: ذكرى زواج، تخرج، مولود، وظيفة جديدة، ورمضان والعيدين</span><span class="en">More than birthdays: anniversaries, graduations, new babies, new jobs, Ramadan and both Eids</span></li>
+      <li><span class="ar">واجباتك: زواج، عزاء، زيارة مريض، مع تذكير ووش يسوون الناس</span><span class="en">Social duties: weddings, condolences, hospital visits, with reminders and what people usually do</span></li>
+      <li><span class="ar">عزيمتك برابط: المعزومين يردون من أي جوال، ويختارون وش يجيبون</span><span class="en">Gatherings by link: guests answer from any phone and pick what to bring</span></li>
+      <li><span class="ar">قائمة أمنيات برابط: أهلك يحجزون الهدية عشان ما تتكرر، وقطّة للهدية مع أصحابك</span><span class="en">A wish list by link: family reserves gifts so nothing is bought twice, plus a group gift pool</span></li>
+      <li><span class="ar">تهنئة بصوتك تنرسل الساعة ١٢، وبطاقة تهنئة تنشرها ستوري</span><span class="en">A voice wish sent at midnight, and a greeting card to share as a story</span></li>
+    </ul>
+  </div>
+  <div class="phones">
+    <figure class="phone rv"><img src="shots/ar-gathering.jpg" alt="عزيمة برابط: مين يجيب وش، وردود المعزومين" loading="lazy" width="600" height="1304"></figure>
+    <figure class="phone rv"><img src="shots/ar-gifts.jpg" alt="قائمة أمنيات برابط يحجز منها الأهل" loading="lazy" width="600" height="1304"></figure>
+  </div>
+</section>
+
+<section class="feat f-ink" id="life">
+  <div class="feat-copy">
+    <p class="excuse rv"><s><span class="ar">«كان عندي شغل»</span><span class="en">“I was stuck at work”</span></s></p>
+    <h2 class="rv"><span class="ar">ويذكّرك بنفسك وبحياتك</span><span class="en">And it reminds you of yourself, and your own life</span></h2>
+    <ul class="rv">
+      <li><span class="ar">راتبك: كم باقي عليه، وكم المتبقي معك هذا الشهر</span><span class="en">Your salary: days left until it lands, and what you have left this month</span></li>
+      <li><span class="ar">التزاماتك: الإيجار والأقساط والفواتير كل شهر قدامك. أرقامك أنت، بدون ربط بنك</span><span class="en">Your obligations: rent, instalments and bills in front of you every month. Your own numbers, with no bank link</span></li>
+      <li><span class="ar">البيت ونفسك: مهام ومواعيد وقائمة أغراض، مع تذكير بالموعد</span><span class="en">Home and you: tasks, appointments and a shopping list, with a reminder for each appointment</span></li>
+      <li><span class="ar">مساعد تكتب له وش عندك بالعربي أو الإنجليزي، ويرتبه لك ويرد على أسئلتك</span><span class="en">An assistant: tell it what is on your plate in Arabic or English, it sorts it out and answers your questions</span></li>
+      <li><span class="ar">ودجت على الشاشة الرئيسية يعد الأيام لأقرب مناسبة</span><span class="en">A home screen widget counting down to the next occasion</span></li>
+      <li><span class="ar">أي رسالة في الشات تصير مهمة: اضغط عليها مطولًا واختر «حوّلها لمهمة»</span><span class="en">Any chat message can become a task: press and hold it, then choose “Make it a task”</span></li>
+      <li><span class="ar">شات مثل اللي تعرفه: أصدقاء وقروبات، صور وفيديو وستوري ورسائل صوتية</span><span class="en">Chat the way you know it: friends and groups, photos, videos, stories and voice messages</span></li>
+    </ul>
+  </div>
+  <div class="phones">
+    <figure class="phone rv"><img class="ar" src="shots/ar-home.jpg" alt="الصفحة الرئيسية: أقرب مناسبة، الموعد الجاي، المهام" loading="lazy" width="600" height="1304"><img class="en" src="shots/en-home.jpg" alt="Home: next occasion, next appointment, tasks" loading="lazy" width="600" height="1304"></figure>
+    <figure class="phone rv"><img class="ar" src="shots/ar-chat.jpg" alt="محادثة فيها رسالة صوتية" loading="lazy" width="600" height="1304"><img class="en" src="shots/en-chat.jpg" alt="Chat list with a story" loading="lazy" width="600" height="1304"></figure>
+  </div>
+</section>
+
+<section class="totask" id="chat-to-task">
+  <div class="totask-copy">
+    <p class="excuse rv"><s><span class="ar">«قلت لي؟ نسيت والله»</span><span class="en">“You told me? I forgot”</span></s></p>
+    <h2 class="rv"><span class="ar">من الشات إلى مهمة، بضغطة</span><span class="en">From chat to task, in one press</span></h2>
+    <p class="totask-lead rv"><span class="ar">أمك كتبت لك «جيب خبز وأنت راجع»؟ لا تخليها تضيع بين الرسائل. اضغط على الرسالة مطولًا، اختر «حوّلها لمهمة»، وتلقاها في مهامك بنفس الكلام. تشتغل مع أي رسالة مكتوبة، في المحادثات الخاصة والقروبات.</span><span class="en">Your mother wrote “bring bread on your way home”? Don't let it sink under other messages. Press and hold the message, choose “Make it a task”, and it lands in your tasks with the same words. It works with any written message, in private chats and groups.</span></p>
+  </div>
+  <div class="totask-demo rv" role="img" aria-label="رسم توضيحي: رسالة في الشات تتحول إلى مهمة. Illustration: a chat message becomes a task.">
+    <div class="tt-step">
+      <small><span class="ar">١. رسالة في الشات</span><span class="en">1. A chat message</span></small>
+      <p class="tt-msg"><span class="ar">جيب خبز وأنت راجع</span><span class="en">Bring bread on your way home</span></p>
     </div>
-  </div>
-  <div class="pair">
-    <figure class="phone rv"><img class="ar" src="/shots/ar-home.jpg" alt="الصفحة الرئيسية في معليش" loading="lazy" width="660" height="1434"><img class="en" src="/shots/en-home.jpg" alt="Maalesh home page" loading="lazy" width="660" height="1434"><figcaption><span class="ar">يومك في صفحة وحدة</span><span class="en">Your day on one page</span></figcaption></figure>
-    <figure class="phone rv"><img class="ar" src="/shots/ar-person.jpg" alt="صفحة شخص" loading="lazy" width="660" height="1434"><img class="en" src="/shots/en-person.jpg" alt="A person's page" loading="lazy" width="660" height="1434"><figcaption><span class="ar">صفحة لكل شخص تحبه</span><span class="en">A page for each person you love</span></figcaption></figure>
-  </div>
-</section>
-
-<section class="chat" id="chat">
-  <div class="aura a-blue" aria-hidden="true"></div>
-  <header class="chat-head rv">
-    <p class="new"><span class="ar">جديد</span><span class="en">New</span></p>
-    <h2><span class="ar">الشات صار له صوت</span><span class="en">Chat found its voice</span></h2>
-    <p class="lead"><span class="ar">أصدقاء وقروبات، صور وفيديو وستوري. وصار تقدر تسولف بصوتك، أو تسجّل مقاطعك الخاصة وترسلها بضغطة.</span><span class="en">Friends and groups, photos, videos and stories. Now you can talk in your own voice, or record your own clips and send them in one tap.</span></p>
-  </header>
-
-  <div class="stage">
-    <div class="mock rv" aria-hidden="true">
-      <div class="msg them"><span class="ar">تذكر عيد ميلاد أمي الأسبوع الجاي</span><span class="en">Remember Mum's birthday next week</span></div>
-      <div class="msg me">
-        <span class="quote"><b><span class="ar">سارة</span><span class="en">Sara</span></b><span class="ar">تذكر عيد ميلاد أمي…</span><span class="en">Remember Mum's birthday…</span></span>
-        <span class="ar">أبشر، الهدية علي</span><span class="en">On it, the gift's on me</span>
-        <span class="react">❤️</span>
-      </div>
-      <div class="msg me voice">
-        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
-        <span class="wave" data-bars="30"></span>
-        <span class="time">0:07</span>
-      </div>
-      <p class="tick"><svg viewBox="0 0 24 24"><path d="M2 13l4 4 8-9M10 16l1 1 8-9"/></svg><span class="ar">انقرأت</span><span class="en">Read</span></p>
-      <div class="msg them typing"><i></i><i></i><i></i></div>
-      <p class="typing-l"><span class="ar">سارة تكتب…</span><span class="en">Sara is typing…</span></p>
-      <div class="tray" lang="ar" dir="rtl">
-        <span class="clip mine"><i></i>أصواتي</span>
-        <span class="clip">ضحكتي</span>
-        <span class="clip">صباح الخير يمه</span>
-        <span class="clip">وينكم يا جماعة</span>
-        <span class="clip">تصبحون على خير</span>
-      </div>
+    <span class="tt-arrow" aria-hidden="true"></span>
+    <div class="tt-step">
+      <small><span class="ar">٢. ضغطة مطوّلة</span><span class="en">2. Press and hold</span></small>
+      <p class="tt-menu"><span>✓</span><span class="ar">حوّلها لمهمة</span><span class="en">Make it a task</span></p>
     </div>
-    <figure class="phone rv"><img class="ar" src="/shots/ar-chat.jpg" alt="الشات" loading="lazy" width="660" height="1434"><img class="en" src="/shots/en-chat.jpg" alt="Chat" loading="lazy" width="660" height="1434"><figcaption><span class="ar">شات وقروبات وستوري</span><span class="en">Chat, groups and stories</span></figcaption></figure>
-  </div>
-
-  <ul class="feats">
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><h3><span class="ar">الفويس</span><span class="en">Voice messages</span></h3><p><span class="ar">اضغط المايك وتكلم وأرسل، مثل الواتساب.</span><span class="en">Tap the mic, talk, send. Just like WhatsApp.</span></p></li>
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg><h3><span class="ar">تهنئة الساعة ١٢</span><span class="en">A midnight wish</span></h3><p><span class="ar">سجّل تهنئة بصوتك، وتوصل في يومهم الساعة ١٢ بالضبط.</span><span class="en">Record a wish in your voice, and it arrives at midnight on their day.</span></p></li>
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg><h3><span class="ar">أصواتي</span><span class="en">My sounds</span></h3><p><span class="ar">سجّل مقاطعك لين ١٠ ثواني وسمّها، تبقى على جوالك وترسلها متى ما بغيت.</span><span class="en">Record your own clips up to 10 seconds and name them. They stay on your phone, ready to send.</span></p></li>
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7 5 12l5 5M5 12h9a5 5 0 0 1 5 5v1"/></svg><h3><span class="ar">رد وتفاعل</span><span class="en">Replies and reactions</span></h3><p><span class="ar">رد على أي رسالة، وتفاعل عليها بإيموجي.</span><span class="en">Reply to any message, and react to it with an emoji.</span></p></li>
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 13l4 4 8-9M10 16l1 1 8-9"/></svg><h3><span class="ar">وصلت، انقرأت، يكتب…</span><span class="en">Delivered, read, typing…</span></h3><p><span class="ar">تعرف وين وصلت رسالتك، وتشوف إذا الثاني يكتب.</span><span class="en">Know where your message is, and see when they're typing.</span></p></li>
-    <li class="rv"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg><h3><span class="ar">تثبيت وبحث</span><span class="en">Pin and search</span></h3><p><span class="ar">ثبّت المحادثات المهمة فوق، وابحث داخل أي محادثة.</span><span class="en">Pin the chats that matter, and search inside any chat.</span></p></li>
-  </ul>
-</section>
-
-<section class="life" id="life">
-  <h2 class="rv"><span class="ar">وحياتك بعد، مرتبة</span><span class="en">And your life, sorted too</span></h2>
-  <div class="life-grid">
-    <article class="tile a-green rv"><h3><span class="ar">المال</span><span class="en">Money</span></h3><p><span class="ar">راتبك والتزاماتك والصافي، بدون ربط بنك.</span><span class="en">Salary, bills and what's left, with no bank link.</span></p></article>
-    <article class="tile a-blue rv"><h3><span class="ar">المواعيد</span><span class="en">Calendar</span></h3><p><span class="ar">مواعيدك ومهامك قدامك، بالميلادي والهجري.</span><span class="en">Appointments and tasks, in Gregorian and Hijri dates.</span></p></article>
-    <article class="tile a-orange rv"><h3><span class="ar">المساعد</span><span class="en">Assistant</span></h3><p><span class="ar">اكتب اللي في بالك، ويرتبه لك.</span><span class="en">Type what's on your mind, and it sorts it out.</span></p></article>
-    <figure class="phone rv"><img class="ar" src="/shots/ar-life.jpg" alt="حياتي" loading="lazy" width="660" height="1434"><img class="en" src="/shots/en-life.jpg" alt="My Life" loading="lazy" width="660" height="1434"><figcaption><span class="ar">مالك ومنزلك، لك وحدك</span><span class="en">Your money and home, just for you</span></figcaption></figure>
+    <span class="tt-arrow" aria-hidden="true"></span>
+    <div class="tt-step">
+      <small><span class="ar">٣. صارت في مهامك</span><span class="en">3. Now in your tasks</span></small>
+      <p class="tt-task"><i aria-hidden="true"></i><span class="ar">جيب خبز وأنت راجع</span><span class="en">Bring bread on your way home</span></p>
+    </div>
+    <p class="tt-note"><span class="ar">رسم توضيحي</span><span class="en">Illustration</span></p>
   </div>
 </section>
-<section class="private" id="private">
-  <div class="shield rv" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
-  <h2 class="rv"><span class="ar">أشخاصك ومالك يبقون على جوالك.</span><span class="en">Your people and money stay on your phone.</span></h2>
-  <p class="rv"><span class="ar">بدون إعلانات وبدون تتبع. الشات والستوري وثلاثة أشخاص مجانًا، والاشتراك يفتح الباقي، وتشوف السعر قبل الشراء.</span><span class="en">No ads and no tracking. Chat, stories and three people are free. A subscription opens the rest, and you see the price before you buy.</span></p>
+
+<section class="plans" id="plans">
+  <h2 class="rv"><span class="ar">وش المجاني، ووش يفتحه الاشتراك</span><span class="en">What's free, and what a subscription opens</span></h2>
+  <div class="plan-grid">
+    <article class="plan rv">
+      <h3><span class="ar">مجانًا</span><span class="en">Free</span></h3>
+      <p class="plan-note"><span class="ar">بعد التسجيل، بدون مدة</span><span class="en">After sign-in, with no time limit</span></p>
+      <ul>
+        <li><span class="ar">الشات: أصدقاء وقروبات</span><span class="en">Chat: friends and groups</span></li>
+        <li><span class="ar">الستوري</span><span class="en">Stories</span></li>
+        <li><span class="ar">ثلاثة أشخاص ببطاقاتهم وتذكيراتهم</span><span class="en">Three people, with their cards and reminders</span></li>
+      </ul>
+    </article>
+    <article class="plan plan-paid rv">
+      <h3><span class="ar">الاشتراك</span><span class="en">Subscription</span></h3>
+      <p class="plan-note"><span class="ar">أول أسبوع مجانًا</span><span class="en">First week free</span></p>
+      <ul>
+        <li><span class="ar">عدد أشخاص بدون حد</span><span class="en">Unlimited people</span></li>
+        <li><span class="ar">المواعيد والمهام</span><span class="en">Calendar and tasks</span></li>
+        <li><span class="ar">المال</span><span class="en">Money</span></li>
+        <li><span class="ar">المساعد</span><span class="en">The assistant</span></li>
+      </ul>
+      <dl class="prices">
+        <div><dt><span class="ar">سنوي</span><span class="en">Yearly</span></dt><dd>98.99 <small><span class="ar">درهم</span><span class="en">AED</span></small></dd></div>
+        <div><dt><span class="ar">ثلاثة أشهر</span><span class="en">3 months</span></dt><dd>49.99 <small><span class="ar">درهم</span><span class="en">AED</span></small></dd></div>
+        <div><dt><span class="ar">شهري</span><span class="en">Monthly</span></dt><dd>19.99 <small><span class="ar">درهم</span><span class="en">AED</span></small></dd></div>
+      </dl>
+      <p class="fine"><span class="ar">الأسعار بالدرهم الإماراتي وقد تختلف حسب بلدك. يتجدد الاشتراك تلقائيًا إلا إذا ألغيته قبل نهاية الفترة بـ 24 ساعة.</span><span class="en">Prices are in UAE dirhams and may differ by country. The subscription renews automatically unless cancelled at least 24 hours before the period ends.</span></p>
+    </article>
+  </div>
+  <p class="privacy-line rv"><span class="ar"><b>خصوصيتك أول:</b> بيانات الأشخاص والمال تبقى على جوالك. بدون إعلانات، وبدون تتبع. للبالغين 18+.</span><span class="en"><b>Your privacy comes first:</b> people and money stay on your phone. No ads, no tracking. For adults 18+.</span></p>
+</section>
+
+<section class="get" id="download">
+  <div class="get-card rv">
+    <div class="get-copy">
+      <h2><span class="ar">حمّل معليش، ولا تقولها</span><span class="en">Get Maalesh, and skip the sorry</span></h2>
+      <div class="cta-row">
+        <a class="btn play-btn" href="https://play.google.com/store/apps/details?id=com.maalesh.app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.9l14-8.5a1 1 0 0 0 0-1.8l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+          <span class="ar">حمّله من قوقل بلاي</span><span class="en">Get it on Google Play</span>
+        </a>
+        <span class="chip"><span class="ar">آيفون: قريبًا</span><span class="en">iPhone: coming soon</span></span>
+      </div>
+      <p class="trust"><span class="ar">بدون إعلانات، بدون تتبع</span><span class="en">No ads, no tracking</span></p>
+    </div>
+    <figure class="qr">
+      <img src="qr.svg" alt="رمز يفتح صفحة معليش في قوقل بلاي" width="232" height="232" loading="lazy">
+      <figcaption><span class="ar">صوّر الرمز بكاميرا جوالك الأندرويد</span><span class="en">Scan with your Android phone's camera</span></figcaption>
+    </figure>
+  </div>
 </section>
 </main>
 
-<footer class="end">
-  <p class="big rv"><span class="ar">قريبًا على آيفون وأندرويد</span><span class="en">Coming soon to iPhone and Android</span></p>
-  <div class="stores rv">
-    <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.5 1.3-2.6-.1 0-2.5-.9-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg><span><small class="ar">قريبًا على</small><small class="en">Coming soon to</small>App Store</span></span>
-    <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.6c-.2.2-.3.6-.3 1v16.8c0 .4.1.8.3 1l9.3-9.4L4 2.6zm10.3 9.4 2.9 2.9-11.8 6.8 8.9-9.7zm0 0L5.4 2.3l11.8 6.8-2.9 2.9zm3.7-2.4 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-3.1-3.1 3.1-2.1z"/></svg><span><small class="ar">قريبًا على</small><small class="en">Coming soon to</small>Google Play</span></span>
-  </div>
-  <a href="mailto:hello@nomaalesh.com">hello@nomaalesh.com</a>
+<footer class="foot">
+  <p class="foot-del"><span class="ar">تبي تحذف حسابك؟ <a href="/support/#delete">طريقة حذف الحساب وبياناتك</a></span><span class="en">Want to delete your account? <a href="/support/#delete">How to delete your account and data</a></span></p>
   <nav>
     <a href="/privacy/"><span class="ar">الخصوصية</span><span class="en">Privacy</span></a>
     <a href="/terms/"><span class="ar">الشروط</span><span class="en">Terms</span></a>
     <a href="/support/"><span class="ar">الدعم</span><span class="en">Support</span></a>
   </nav>
-  <p class="co">© 2026 PNEUMA GENERAL TRADING L.L.C - O.P.C</p>
+  <p class="foot-co"><bdi dir="ltr">© 2026 PNEUMA GENERAL TRADING L.L.C - O.P.C</bdi><span class="ar"> (بنما)، أبوظبي</span><span class="en">, Abu Dhabi</span></p>
 </footer>
-<script src="/site.js" defer></script>
+
+<a class="sticky" id="sticky" href="https://play.google.com/store/apps/details?id=com.maalesh.app" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.9l14-8.5a1 1 0 0 0 0-1.8l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+  <span class="ar">حمّل معليش للأندرويد</span><span class="en">Get Maalesh for Android</span>
+</a>
+<script src="home.js"></script>
 </body>
 </html>
